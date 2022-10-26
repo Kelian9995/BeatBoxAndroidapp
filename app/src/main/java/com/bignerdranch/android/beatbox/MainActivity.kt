@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.beatbox.databinding.ActivityMainBinding
 import com.bignerdranch.android.beatbox.databinding.ListItemSoundBinding
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var beatBox: BeatBox
@@ -26,12 +27,16 @@ class MainActivity : AppCompatActivity() {
             adapter = SoundAdapter(beatBox.sounds)
         }
     }
+    override fun onDestroy() {
+        super.onDestroy()
+        beatBox.release()
+    }
 
     private inner class SoundHolder(private val binding: ListItemSoundBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         init {
-            binding.viewModel = SoundViewModel()
+            binding.viewModel = SoundViewModel(beatBox)
         }
 
         fun bind(sound: Sound) {
