@@ -1,0 +1,7 @@
+<root>
+    <item name='org.junit.Assert void assertSame(java.lang.Object, java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.Contract'>
+            <val name="pure" val="true" />
+        </annotation>
+    </item>
+</root>
